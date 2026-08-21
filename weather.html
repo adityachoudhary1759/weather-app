@@ -1,53 +1,147 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Weather App</title>
+
+    <title>Unnati Weather</title>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
 
     <link rel="stylesheet" href="weather.css">
 </head>
+
 <body>
 
-<div class="container">
+    <div class="container">
 
-    <h1>🌤  Unnati Personal Weather App</h1>
+        <div class="header">
 
-    <div class="search-box">
-        <input type="text" id="city" placeholder="Enter city name">
-        <button onclick="getWeather()">Search</button>
-    </div>
-
-    <div class="weather" id="weather">
-
-        <h2 id="cityName"></h2>
-
-        <img id="icon">
-
-        <h1 id="temp"></h1>
-
-        <h3 id="condition"></h3>
-
-        <div class="details">
-
-            <div>
-                <p>Humidity</p>
-                <h3 id="humidity"></h3>
+            <div class="weather-logo">
+                🌤️
             </div>
 
-            <div>
-                <p>Wind</p>
-                <h3 id="wind"></h3>
+            <h1>Unnati Weather</h1>
+
+            <p class="subtitle">
+                Your personal weather companion
+            </p>
+
+        </div>
+
+
+        <div class="search-box">
+
+            <input
+                type="text"
+                id="city"
+                placeholder="Search for a city..."
+                autocomplete="off"
+            >
+
+            <button onclick="getWeather()">
+                🔍 Search
+            </button>
+
+        </div>
+
+
+        <div class="weather" id="weather">
+
+            <div class="location">
+
+                <span class="location-icon">
+                    📍
+                </span>
+
+                <h2 id="cityName">
+                    City
+                </h2>
+
             </div>
+
+
+            <div class="weather-icon">
+
+                <img
+                    id="icon"
+                    src=""
+                    alt=""
+                >
+
+            </div>
+
+
+            <div class="temperature">
+
+                <h1 id="temp">
+                    -- °C
+                </h1>
+
+                <h3 id="condition">
+                    --
+                </h3>
+
+            </div>
+
+
+            <div class="details">
+
+                <div class="detail-card">
+
+                    <div class="detail-icon">
+                        💧
+                    </div>
+
+                    <div>
+                        <p>Humidity</p>
+
+                        <h3 id="humidity">
+                            --%
+                        </h3>
+                    </div>
+
+                </div>
+
+
+                <div class="detail-card">
+
+                    <div class="detail-icon">
+                        💨
+                    </div>
+
+                    <div>
+                        <p>Wind Speed</p>
+
+                        <h3 id="wind">
+                            -- km/h
+                        </h3>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer">
+
+            <p>
+                Made with ❤️ for Unnati
+            </p>
 
         </div>
 
     </div>
 
-</div>
 
-<script src="weather.js"></script>
+    <script src="weather.js"></script>
 
 </body>
-</html>
 
+</html>

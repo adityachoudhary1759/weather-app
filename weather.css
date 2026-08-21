@@ -1,121 +1,384 @@
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial, Helvetica, sans-serif;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", Arial, sans-serif;
 }
 
-body{
+body {
+    min-height: 100vh;
 
-    height:100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-    display:flex;
-    justify-content:center;
-    align-items:center;
+    background: linear-gradient(
+        135deg,
+        #102a33,
+        #183d48,
+        #24515d
+    );
 
-    background:linear-gradient(135deg,#00c6ff,#0072ff);
+    overflow: hidden;
 
+    position: relative;
 }
 
-.container{
+body::before,
+body::after {
+    content: "";
+    position: absolute;
 
-    width:380px;
+    width: 220px;
+    height: 220px;
 
-    background:white;
+    border-radius: 50%;
 
-    padding:30px;
+    filter: blur(80px);
 
-    border-radius:20px;
-
-    text-align:center;
-
-    box-shadow:0 10px 30px rgba(0,0,0,.3);
-
+    opacity: 0.35;
 }
 
-h1{
-    margin-bottom:20px;
+body::before {
+    background: #00c6ff;
+    top: -80px;
+    left: -80px;
 }
 
-.search-box{
-
-    display:flex;
-    gap:10px;
+body::after {
+    background: #7f00ff;
+    bottom: -80px;
+    right: -80px;
 }
 
-input{
 
-    flex:1;
+.container {
+    width: 420px;
+    max-height: 96vh;
 
-    padding:12px;
+    padding: 25px 30px;
 
-    border:none;
+    position: relative;
+    z-index: 1;
 
-    outline:none;
+    background: rgba(255, 255, 255, 0.12);
 
-    border-radius:8px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
 
-    background:#f1f1f1;
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
 
-    font-size:16px;
+    border-radius: 24px;
 
+    text-align: center;
+
+    color: white;
+
+    box-shadow:
+        0 20px 45px rgba(0, 0, 0, 0.35);
+
+    overflow: hidden;
 }
 
-button{
 
-    padding:12px 20px;
-
-    border:none;
-
-    border-radius:8px;
-
-    background:#0072ff;
-
-    color:white;
-
-    cursor:pointer;
-
-    font-size:16px;
-
+.header {
+    margin-bottom: 18px;
 }
 
-button:hover{
+.weather-logo {
+    font-size: 32px;
 
-    background:#005ce6;
+    margin-bottom: 2px;
 
+    animation: float 3s ease-in-out infinite;
 }
 
-.weather{
+.header h1 {
+    font-size: 30px;
 
-    margin-top:25px;
+    margin-bottom: 4px;
 
-    display:none;
+    background: linear-gradient(
+        90deg,
+        #ffffff,
+        #9beaff
+    );
 
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
-.weather img{
+.subtitle {
+    font-size: 12px;
 
-    width:100px;
+    color: rgba(255, 255, 255, 0.7);
 }
 
-.details{
 
-    margin-top:20px;
+.search-box {
+    display: flex;
 
-    display:flex;
+    gap: 10px;
 
-    justify-content:space-around;
-
+    margin-bottom: 20px;
 }
 
-.details div{
+input {
+    flex: 1;
 
-    background:#f5f5f5;
+    min-width: 0;
 
-    padding:15px;
+    padding: 12px 14px;
 
-    border-radius:10px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
 
-    width:120px;
+    outline: none;
 
+    border-radius: 11px;
+
+    background: rgba(255, 255, 255, 0.15);
+
+    color: white;
+
+    font-size: 14px;
+}
+
+input::placeholder {
+    color: rgba(255, 255, 255, 0.65);
+}
+
+input:focus {
+    border-color: #00c6ff;
+
+    box-shadow:
+        0 0 12px rgba(0, 198, 255, 0.3);
+}
+
+
+button {
+    padding: 12px 20px;
+
+    border: none;
+
+    border-radius: 11px;
+
+    background: linear-gradient(
+        135deg,
+        #00c6ff,
+        #0072ff
+    );
+
+    color: white;
+
+    cursor: pointer;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    transition: 0.25s ease;
+}
+
+button:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 8px 20px rgba(0, 150, 255, 0.4);
+}
+
+
+.weather {
+    margin-top: 5px;
+
+    padding: 18px;
+
+    border-radius: 20px;
+
+    background: rgba(255, 255, 255, 0.10);
+
+    border: 1px solid rgba(255, 255, 255, 0.2);
+
+    animation: fadeIn 0.5s ease;
+}
+
+
+.location {
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 5px;
+
+    margin-bottom: 2px;
+}
+
+.location h2 {
+    font-size: 27px;
+}
+
+.location-icon {
+    font-size: 15px;
+}
+
+
+.weather-icon img {
+    width: 80px;
+
+    margin: 4px 0;
+
+    filter: drop-shadow(
+        0 6px 8px rgba(0, 0, 0, 0.25)
+    );
+
+    animation: float 3s ease-in-out infinite;
+}
+
+
+.temperature h1 {
+    font-size: 34px;
+
+    margin: 0;
+
+    color: #b8f1ff;
+}
+
+.temperature h3 {
+    font-size: 15px;
+
+    margin-top: 2px;
+
+    color: rgba(255, 255, 255, 0.9);
+
+    font-weight: 500;
+}
+
+
+.details {
+    display: flex;
+
+    gap: 10px;
+
+    margin-top: 18px;
+}
+
+.detail-card {
+    flex: 1;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 4px;
+
+    padding: 10px;
+
+    border-radius: 14px;
+
+    background: rgba(255, 255, 255, 0.13);
+
+    border: 1px solid rgba(255, 255, 255, 0.15);
+
+    transition: 0.25s ease;
+}
+
+.detail-card:hover {
+    transform: translateY(-3px);
+
+    background: rgba(255, 255, 255, 0.18);
+}
+
+.detail-icon {
+    font-size: 20px;
+}
+
+.detail-card p {
+    font-size: 11px;
+
+    color: rgba(255, 255, 255, 0.65);
+}
+
+.detail-card h3 {
+    font-size: 14px;
+
+    margin-top: 2px;
+}
+
+
+.footer {
+    margin-top: 10px;
+
+    font-size: 11px;
+
+    color: rgba(255, 255, 255, 0.6);
+}
+
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-5px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+
+@media (max-width: 500px) {
+
+    body {
+        overflow-y: auto;
+    }
+
+    .container {
+        width: 92%;
+        padding: 22px 18px;
+
+        max-height: none;
+    }
+
+    .header h1 {
+        font-size: 25px;
+    }
+
+    .search-box {
+        flex-direction: column;
+    }
+
+    button {
+        width: 100%;
+    }
+
+    .weather {
+        padding: 15px;
+    }
+
+    .details {
+        gap: 8px;
+    }
+
+    .detail-card h3 {
+        font-size: 13px;
+    }
 }
